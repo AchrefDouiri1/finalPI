@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:f="http://xmlns.jcp.org/jsf/core"
+	   xmlns:h="http://xmlns.jcp.org/jsf/html"
+	   xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	   xmlns:jsf="http://xmlns.jcp.org/jsf"
+	   xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	   xmlns:b="http://bootsfaces.net/ui"
+	   xmlns:p="http://primefaces.org/ui"> 
+    <h:head>
+        <meta charset="utf-8" />
+        <title>Ajouter Taches</title>
+        <h:outputStylesheet library="default" name="css/form.css"  />
+    </h:head>
+    <h:body>
+    
+         <h:form>     
+    <p:growl id="messages" showDetail="true" />
+ 
+    <p:toolbar>
+        <f:facet name="left">
+         <span class="ui-separator">
+                <span class="ui-icon pi pi-ellipsis-v" />
+            </span>
+        <b:dropMenu value="Projets" iconAwesome="birthday-cake">
+      <b:navLink value="Ajouter" href="AjoutProject.jsf"></b:navLink>
+      <b:navLink></b:navLink>
+      <b:navLink value="Affecter Projet => Groupe" href="TacheToProject.jsf"></b:navLink>
+      <b:navLink></b:navLink>
+      <b:navLink value="Afficher Projets" href="affichageprojet.jsf"></b:navLink>
+      <b:navLink></b:navLink>
+      
+    </b:dropMenu>
+     <span class="ui-separator">
+                <span class="ui-icon pi pi-ellipsis-v" />
+            </span>
+    
+    
+            <b:dropMenu value="Taches" iconAwesome="birthday-cake">
+      <b:navLink value="Ajouter" href="addtache.jsf"></b:navLink>
+      <b:navLink></b:navLink>
+      <b:navLink value="Afficher" href="alltache.jsf"></b:navLink>
+      <b:navLink></b:navLink>
+      <b:navLink value="Affecter Taches" href="TacheToProject.jsf"></b:navLink>
+      <b:navLink></b:navLink>
+      
+    </b:dropMenu>
+     <span class="ui-separator">
+                <span class="ui-icon pi pi-ellipsis-v" />
+            </span>
+    
+    
+            <b:dropMenu value="Groupes" iconAwesome="birthday-cake">
+      <b:navLink value="Affecter utilisateur" href="affecterusergroup.jsf"></b:navLink>
+      <b:navLink></b:navLink>
+      <b:navLink value="Affecter Groupe => Projet" href="affecterprojetgroup.jsf"></b:navLink>
+      <b:navLink></b:navLink>
+      <b:navLink value="Afficher Groupes" href="#"></b:navLink>
+      <b:navLink></b:navLink>
+		      <b:navLink value="Ajouter Groupe" href="ajoutgroup.jsf"></b:navLink>
+		      
+    </b:dropMenu>
+     <span class="ui-separator">
+                <span class="ui-icon pi pi-ellipsis-v" />
+            </span>
+    
+    
+    
+    
+    
+            <b:navLink href="allusers.jsf" value="Utilisateurs et Groupes"
+               icon="globe" iconAlign="right"/>
+             <span class="ui-separator">
+                <span class="ui-icon pi pi-ellipsis-v" />
+            </span> 
+
+ 
+            
+ 
+            
+        </f:facet>
+ 
+        <f:facet name="right">
+            
+                  <b:commandButton value="Logout" ajax="true" action="#{userBean.doLogout()}" update="@none" look="primary" style="width:80px"/>
+               
+            
+        </f:facet>
+ 
+    </p:toolbar>
+</h:form>
+
+      
+     
+        <script type="text/javascript">    
+    PrimeFaces.locales['de'] = {
+        closeText: 'Schließen',
+        prevText: 'Zurück',
+        nextText: 'Weiter',
+        monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+        monthNamesShort: ['Jan', 'Feb', 'März', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+        dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+        dayNamesShort: ['Son', 'Mon', 'Die', 'Mit', 'Don', 'Fre', 'Sam'],
+        dayNamesMin: ['S', 'M', 'D', 'M ', 'D', 'F ', 'S'],
+        weekHeader: 'Woche',
+        FirstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: '',
+        timeOnlyTitle: 'Nur Zeit',
+        timeText: 'Zeit',
+        hourText: 'Stunde',
+        minuteText: 'Minute',
+        secondText: 'Sekunde',
+        currentText: 'Aktuelles Datum',
+        ampm: false,
+        month: 'Monat',
+        week: 'Woche',
+        day: 'Tag',
+        allDayText: 'Ganzer Tag'
+    };
+</script>
+ 
+<style type="text/css">
+    .value {
+        font-weight: bold;
+    }
+</style>
+ 
+ 
+<h:form id="form">
+
+    <p:growl id="msgs" showDetail="true" />
+     
+    
+    
+    
+    <br />
+	     	
+	        
+	        <br />
+	        <h3>Nom Group :</h3>
+	        <span class="ui-float-label">
+       <b:inputText id="float-input" value="#{groupUserBean.nom}" />
+       
+        <p:outputLabel for="@previous"  /> 
+   </span>
+         <br />
+	
+	
+	
+       
+         
+        
+         
+        
+    
+     <br />
+     <br />
+    <!-- <p:commandButton value="Ajouter" update="msgs" action="#{tacheBean.ajouterTache()}" icon="pi pi-check" />
+      -->
+      
+      <b:commandButton value="Ajouter" ajax="true" action="#{groupUserBean.ajouterGroup()}" update="@none" look="primary" style="width:80px"/>
+    <p:dialog modal="true" resizable="false" header="Values" widgetVar="dlg" showEffect="fold">
+        <p:panelGrid id="display" columns="2" columnClasses="label,value">
+            <h:outputText value="Inline:" />
+            <h:outputText value="#{calendarView.date1}">
+                <f:convertDateTime pattern="MM/dd/yyyy" />
+            </h:outputText>
+             
+            
+             
+            <h:outputText value="Datetime:" />
+            <h:outputText value="#{calendarView.date10}">
+                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+            </h:outputText>
+             
+           
+        </p:panelGrid>
+    </p:dialog>
+    
+</h:form>
+        
+        	
+    </h:body>
+</html>

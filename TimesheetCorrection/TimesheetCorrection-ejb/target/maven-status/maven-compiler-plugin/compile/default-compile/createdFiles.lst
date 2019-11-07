@@ -1,0 +1,12 @@
+implservices\UserService.class
+entities\GroupUser.class
+entities\Tache.class
+interfservices\TacheServiceRemote.class
+implservices\TacheService.class
+implservices\ProjectService.class
+interfservices\GroupServiceRemote.class
+entities\User.class
+implservices\GroupService.class
+interfservices\UserServiceRemote.class
+entities\Project.class
+interfservices\ProjectServiceRemote.class

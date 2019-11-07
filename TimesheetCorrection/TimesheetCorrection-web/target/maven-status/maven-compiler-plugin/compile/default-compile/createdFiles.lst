@@ -1,0 +1,6 @@
+mbeans\UserBean.class
+mbeans\GroupUserBean.class
+mbeans\PasswordView.class
+mbeans\TacheBean.class
+mbeans\CalendarView.class
+mbeans\ProjectBean.class
